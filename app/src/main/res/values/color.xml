@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <item name="bg_global" type="color">#FFD8CA</item>
+    <item name="bg_score" type="color">#FF5116</item>
+    <item name="bg_board" type="color">#FF855A</item>
+    <item name="bg_control" type="color">#BF998C</item>
+    <item name="colBoard" type="color">#ff05ae00</item>
+
+</resources>
