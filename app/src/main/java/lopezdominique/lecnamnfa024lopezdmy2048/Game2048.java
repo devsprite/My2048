@@ -58,7 +58,7 @@ public class Game2048 {
         }
 
         /**
-         *
+         * Retourne true ou false
          * @param flag int
          * @return boolean
          */
