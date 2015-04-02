@@ -33,6 +33,10 @@ public class Game2048 {
             this.pow2 = initPow2();
         }
 
+        /**
+         *
+         * @return un tableau d'entier pour initialiser pow2
+         */
         public int[] initPow2() {
             for (int i = 0; i < 17; i++) {
                 pow2[i] = i;
