@@ -8,26 +8,28 @@ public class Game2048 {
     private int[][] board = new int[4][4];
 
     public Game2048() {
-        this.board = board;
+        init();
     }
 
-    public int getTile(int l, int c){
-        return this.board[l][c];
+    public int getTile(int l, int c){ return this.board[l][c]; }
+
+    public void init(){
+        int cp = 17;
+        for (int l = 0; l < 4 ; l++ ){
+            for (int c = 0; c < 4; c++){
+                board[l][c] = cp;
+                cp--;
+            }
+        }
     }
 
 
     public static class Tile {
-        static int[] pow2 = new int[17];
-        int flag; // entier, état de la tuile
-        int r; // entier, puissance de 2 (0,1,2,3,4...) non le résultat
+        private int[] pow2 = new int[17];
+        private int flag; // entier, état de la tuile
+        private int r; // entier, puissance de 2 (0,1,2,3,4...) non le résultat
 
         public Tile() {
-            this.flag = 0;
-            this.r = 0;
-            this.pow2 = initPow2();
-        }
-
-        public Tile(int flag, int r) {
             this.flag = flag;
             this.r = r;
             this.pow2 = initPow2();
@@ -38,8 +40,9 @@ public class Game2048 {
          * @return un tableau d'entier pour initialiser pow2
          */
         public int[] initPow2() {
-            for (int i = 0; i < 17; i++) {
-                pow2[i] = i;
+            pow2[0] = 0;
+            for (int i = 1; i < 17; i++) {
+                pow2[i] = (int) Math.pow(2,i);
             }
             return pow2;
         }

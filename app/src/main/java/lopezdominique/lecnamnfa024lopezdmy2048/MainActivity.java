@@ -2,6 +2,7 @@ package lopezdominique.lecnamnfa024lopezdmy2048;
 
 import android.os.Bundle;
 import android.support.v7.app.ActionBarActivity;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.LinearLayout;
@@ -20,7 +21,8 @@ public class MainActivity extends ActionBarActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         initialisationTableau();
-        Game2048.Tile tile = new Game2048.Tile();
+        Game2048 tile = new Game2048();
+        Log.i("TOTO","toto");
     }
 
     private void initialisationTableau() {
