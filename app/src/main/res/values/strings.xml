@@ -1,4 +1,5 @@
 <resources>
     <string name="app_name">My2048-LopezDominique</string>
     <string name="action_settings"></string>
+    <string name="action_lauch">Nouveau jeu</string>
 </resources>
