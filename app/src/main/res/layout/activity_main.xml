@@ -31,32 +31,31 @@
 
             <TextView
                 android:id="@+id/scoreTV"
-                android:layout_width="90dp"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textAppearance="?android:attr/textAppearanceMedium"
                 android:text="0"
                 android:layout_alignParentBottom="true"
                 android:layout_alignParentRight="true"
                 android:layout_alignParentEnd="true"
-                android:textSize="18sp"
+                android:textSize="14dp"
                 android:gravity="right"
                 android:textStyle="bold"
                 android:background="#AAFFFFFF"
-                android:padding="3dp" />
+                android:padding="0dp" />
 
             <TextView
                 android:id="@+id/lastTPV"
-                android:layout_width="100dp"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textAppearance="?android:attr/textAppearanceMedium"
                 android:text="0"
                 android:gravity="right"
-                android:textSize="18sp"
+                android:textSize="14dp"
                 android:textStyle="bold"
-                android:padding="3dp"
-                android:layout_alignTop="@+id/scoreTV"
-                android:layout_toLeftOf="@+id/scoreTV"
-                android:layout_toStartOf="@+id/scoreTV" />
+                android:padding="0dp"
+                android:layout_below="@+id/bestTRB"
+                android:layout_centerHorizontal="true" />
 
             <RatingBar
                 android:id="@+id/bestTRB"
@@ -277,18 +276,19 @@
 
         <ImageButton
             android:id="@+id/buttonU"
-            android:layout_width="50dp"
-            android:layout_height="50dp"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
             android:src="@drawable/up"
             android:scaleType="fitCenter"
             android:background="@android:color/transparent"
             android:layout_above="@+id/buttonL"
-            android:layout_centerHorizontal="true" />
+            android:layout_centerHorizontal="true"
+            android:backgroundTint="@color/colBT" />
 
         <ImageButton
             android:id="@+id/buttonD"
-            android:layout_width="50dp"
-            android:layout_height="50dp"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
             android:src="@drawable/down"
             android:scaleType="fitCenter"
             android:background="@android:color/transparent"
@@ -298,8 +298,8 @@
 
         <ImageButton
             android:id="@+id/buttonR"
-            android:layout_width="50dp"
-            android:layout_height="50dp"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
             android:src="@drawable/right"
             android:scaleType="fitCenter"
             android:background="@android:color/transparent"
@@ -309,8 +309,8 @@
 
         <ImageButton
             android:id="@+id/buttonL"
-            android:layout_width="50dp"
-            android:layout_height="50dp"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
             android:src="@drawable/left"
             android:scaleType="fitCenter"
             android:background="@android:color/transparent"

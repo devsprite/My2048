@@ -212,8 +212,8 @@ public class MainActivity extends ActionBarActivity {
         lBoard = boardLayout.getWidth();
 
         wBoard = (int)(80*(lBoard/hGlobal));
-        wScore = (int)(0.25*(100-wBoard));
-        wControl = (int)(0.75*(100-wBoard));
+        wScore = (int)(0.30*(100-wBoard));
+        wControl = (int)(0.70*(100-wBoard));
 
         controlLayoutParams.weight = wControl;
         controlLayout.setLayoutParams(controlLayoutParams);
