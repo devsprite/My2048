@@ -6,4 +6,27 @@
     <item name="bg_control" type="color">#BF998C</item>
     <item name="colBoard" type="color">#ff05ae00</item>
 
+    <item name="col00" type="color">#ffe3f4cb</item>
+    <item name="col01" type="color">#ffcefae0</item>
+    <item name="col02" type="color">#fff4d3cb</item>
+    <item name="col03" type="color">#ffccc8f4</item>
+    <item name="col04" type="color">#ffd5ea7f</item>
+    <item name="col05" type="color">#ffbdea87</item>
+    <item name="col06" type="color">#ff95ea7f</item>
+    <item name="col07" type="color">#ff7feaae</item>
+    <item name="col08" type="color">#fff9b43e</item>
+    <item name="col09" type="color">#fff99437</item>
+    <item name="col10" type="color">#fff98745</item>
+    <item name="col11" type="color">#fff96a4e</item>
+    <item name="col12" type="color">#fffc652e</item>
+    <item name="col13" type="color">#ffd12617</item>
+    <item name="col14" type="color">#ffff35a5</item>
+    <item name="col15" type="color">#ffff244d</item>
+    <item name="col16" type="color">#ffff2973</item>
+    <item name="col17" type="color">#ffff001a</item>
+
+    <item name="colNT" type="color">#ffff0000</item>
+    <item name="colDT" type="color">#ff000000</item>
+    <item name="colBT" type="color">#ffffffff</item>
+
 </resources>

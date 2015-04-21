@@ -10,20 +10,55 @@ import android.widget.TextView;
 
 public class MainActivity extends ActionBarActivity {
 
+    private int[][] boxId = new int[4][4]; // Tableau des identifiants des TextView
+    private int[] colID = new int[21]; // Identifiant des ressources correspondant aux couleurs 0 à 17 couleurs de fond, +3 couleurs de textes
+    private int[] color = new int[21];
+
     private TextView[][] box = new TextView[4][4];// Tableau des TextView en correspondance avec les tuiles de l'UI
-    private int [][] boxId = new int[4][4]; // Tableau des identifiants des TextView
+
     private Game2048 game;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        initialisationTableau();
+
+// Initialisation du tableau des couleurs
+        colID[0] = R.color.col00;
+        colID[1] = R.color.col01;
+        colID[2] = R.color.col02;
+        colID[3] = R.color.col03;
+        colID[4] = R.color.col04;
+        colID[5] = R.color.col05;
+        colID[6] = R.color.col06;
+        colID[7] = R.color.col07;
+        colID[8] = R.color.col08;
+        colID[9] = R.color.col09;
+        colID[10] = R.color.col10;
+        colID[11] = R.color.col11;
+        colID[12] = R.color.col12;
+        colID[13] = R.color.col13;
+        colID[14] = R.color.col14;
+        colID[15] = R.color.col15;
+        colID[16] = R.color.col16;
+        colID[17] = R.color.col17;
+        colID[18] = R.color.colNT;
+        colID[19] = R.color.colDT;
+        colID[20] = R.color.colBT;
+// Les méthodes comme setBackgroundColor et setTextColor nécessite une valeur de couleur que nous disposerons dans un tableau
+        for (int i = 0; i<color.length; i++) {
+            color[i] = getResources().getColor(colID[i]);
+        }
+
+        initialisationTableau(); // Initialisation tableau d'identifiants des TextView
         game = new Game2048();
         game.init();
         update();
     }
 
+    /**
+     * Initialisation du tableau des identifiants des TexView et affichage dans chaque TextView de "lc="+l+c
+     */
     private void initialisationTableau() {
         // Récupération à la main des identifiants des TextView
         // boxId[0][0] = R.id.box00;
@@ -53,18 +88,36 @@ public class MainActivity extends ActionBarActivity {
     }
 
 
+    /**
+     * Mise à jour de l'affichage dans chaque TextView avec la valeur de 2^r
+     */
     public void update(){
         for(int l=0; l < boxId.length; l++ ) {
             for (int c=0; c < boxId[l].length; c++){
-                Game2048.Tile t = game.getTile(l,c);
-                box[l][c].setText(t.toString() + "\n" + "2^" + t.getRank());
+                Game2048.Tile tile = game.getTile(l,c);
+                box[l][c].setText(tile.toString());
+                box[l][c].setBackgroundColor(color[tile.getRank()]);
+
+// Les tuiles de rang inférieur à 3 sont en texte noir, sinon en blanc
+                if (tile.getRank()<=3) {
+                    box[l][c].setTextColor(color[19]);
+                }else{
+                    box[l][c].setTextColor(color[20]);
+                }
+// Les nouvelles tuiles sont en text rouge
+                if (tile.isNew()){
+                    box[l][c].setTextColor(color[18]);
+                }
+
             }
         }
     }
 
 
-
-
+    /**
+     * Méthode pour créer un plateau carré suivant le device
+     * @param hasFocus
+     */
     @Override
     public void onWindowFocusChanged(boolean hasFocus) {
         super.onWindowFocusChanged(hasFocus);
