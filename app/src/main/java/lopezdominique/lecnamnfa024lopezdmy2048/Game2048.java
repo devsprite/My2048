@@ -5,13 +5,22 @@ package lopezdominique.lecnamnfa024lopezdmy2048;
  */
 public class Game2048 {
 
+    private int score;
+    private int bestR;
+    private String lastP;
+
     private Tile[][] board;
+
 
     /**
      * Constructeur
      */
     public Game2048() {
         board = new Tile[4][4];
+        score = 0;
+        bestR = 0;
+        lastP = "";
+
     }
 
     /**
@@ -37,7 +46,20 @@ public class Game2048 {
      */
     public Tile getTile(int l, int c){ return board[l][c]; }
 
+    public int getScore() {
+        return score;
+    }
 
+    public int getBestR() {
+        return bestR;
+    }
+
+    public String getLastP() {
+        return lastP;
+    }
+
+
+    //*************************************************************************************
     /**
      * Classe Tile intégrer à la classe Game2038 car elle ne peut exister sans Game2048
      */

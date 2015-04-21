@@ -3,6 +3,7 @@ package lopezdominique.lecnamnfa024lopezdmy2048;
 import android.os.Bundle;
 import android.support.v7.app.ActionBarActivity;
 import android.widget.LinearLayout;
+import android.widget.RatingBar;
 import android.widget.RelativeLayout;
 import android.widget.TableLayout;
 import android.widget.TextView;
@@ -15,6 +16,10 @@ public class MainActivity extends ActionBarActivity {
     private int[] color = new int[21];
 
     private TextView[][] box = new TextView[4][4];// Tableau des TextView en correspondance avec les tuiles de l'UI
+    private TextView scoreTV;
+    private TextView lastTPV;
+
+    private RatingBar bestTRB;
 
     private Game2048 game;
 
@@ -22,6 +27,14 @@ public class MainActivity extends ActionBarActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        scoreTV = (TextView) findViewById(R.id.scoreTV);
+        lastTPV = (TextView) findViewById(R.id.lastTPV);
+        bestTRB = (RatingBar) findViewById(R.id.bestTRB);
+
+        scoreTV.setText("3 932 000");
+        lastTPV.setText("2+4+128");
+        bestTRB.setRating(5);
+
 
 // Initialisation du tableau des couleurs
         colID[0] = R.color.col00;

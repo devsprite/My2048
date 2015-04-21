@@ -6,8 +6,8 @@
     android:paddingTop="@dimen/activity_vertical_margin" tools:context=".MainActivity">
 
     <LinearLayout
-        android:background="@color/bg_global"
         android:id="@+id/globalLO"
+        android:background="@color/bg_global"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_alignParentTop="true"
@@ -19,20 +19,61 @@
         >
 
         <RelativeLayout
-            android:background="@color/bg_score"
             android:id="@+id/scoreLO"
             android:layout_gravity="bottom"
             android:layout_height="0dip"
             android:layout_weight="1"
             android:layout_width="match_parent"
             android:orientation="vertical"
+            android:paddingTop="5dp"
+            android:paddingBottom="5dp"
             >
 
+            <TextView
+                android:id="@+id/scoreTV"
+                android:layout_width="90dp"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:text="0"
+                android:layout_alignParentBottom="true"
+                android:layout_alignParentRight="true"
+                android:layout_alignParentEnd="true"
+                android:textSize="18sp"
+                android:gravity="right"
+                android:textStyle="bold"
+                android:background="#AAFFFFFF"
+                android:padding="3dp" />
+
+            <TextView
+                android:id="@+id/lastTPV"
+                android:layout_width="100dp"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:text="0"
+                android:gravity="right"
+                android:textSize="18sp"
+                android:textStyle="bold"
+                android:padding="3dp"
+                android:layout_alignTop="@+id/scoreTV"
+                android:layout_toLeftOf="@+id/scoreTV"
+                android:layout_toStartOf="@+id/scoreTV" />
+
+            <RatingBar
+                android:id="@+id/bestTRB"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentTop="true"
+                android:numStars="17"
+                android:rating="1"
+                android:stepSize="1"
+                style="@android:style/Widget.DeviceDefault.Light.RatingBar.Small"
+                android:layout_centerHorizontal="true"
+                android:layout_above="@+id/scoreTV" />
         </RelativeLayout>
 
         <TableLayout
-            android:background="@color/colBoard"
             android:id="@+id/boardLO"
+            android:background="@color/colBoard"
             android:layout_height="wrap_content"
             android:layout_weight="2"
             android:layout_width="match_parent"
@@ -226,8 +267,8 @@
 
 
     <RelativeLayout
-        android:background="@color/bg_control"
         android:id="@+id/controlLO"
+        android:background="@color/bg_control"
         android:layout_gravity="bottom"
         android:layout_height="0dip"
         android:layout_weight="3"
