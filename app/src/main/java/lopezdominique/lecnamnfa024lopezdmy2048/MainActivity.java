@@ -2,9 +2,6 @@ package lopezdominique.lecnamnfa024lopezdmy2048;
 
 import android.os.Bundle;
 import android.support.v7.app.ActionBarActivity;
-import android.util.Log;
-import android.view.Menu;
-import android.view.MenuItem;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TableLayout;
@@ -15,14 +12,16 @@ public class MainActivity extends ActionBarActivity {
 
     private TextView[][] box = new TextView[4][4];// Tableau des TextView en correspondance avec les tuiles de l'UI
     private int [][] boxId = new int[4][4]; // Tableau des identifiants des TextView
+    private Game2048 game;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         initialisationTableau();
-        Game2048 tile = new Game2048();
-        Log.i("TOTO","toto");
+        game = new Game2048();
+        game.init();
+        update();
     }
 
     private void initialisationTableau() {
@@ -49,33 +48,22 @@ public class MainActivity extends ActionBarActivity {
         for (int l = 0; l<4 ; l++)
             for (int c = 0; c < 4; c++) {
                 box[l][c] = (TextView) findViewById(boxId[l][c]);
-                // box[l][c].setText("lc="+l+c);
+                box[l][c].setText("lc="+l+c);
             }
     }
 
 
-
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.menu_main, menu);
-        return true;
-    }
-
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        // Handle action bar item clicks here. The action bar will
-        // automatically handle clicks on the Home/Up button, so long
-        // as you specify a parent activity in AndroidManifest.xml.
-        int id = item.getItemId();
-
-        //noinspection SimplifiableIfStatement
-        if (id == R.id.action_settings) {
-            return true;
+    public void update(){
+        for(int l=0; l < boxId.length; l++ ) {
+            for (int c=0; c < boxId[l].length; c++){
+                Game2048.Tile t = game.getTile(l,c);
+                box[l][c].setText(t.toString() + "\n" + "2^" + t.getRank());
+            }
         }
-
-        return super.onOptionsItemSelected(item);
     }
+
+
+
 
     @Override
     public void onWindowFocusChanged(boolean hasFocus) {

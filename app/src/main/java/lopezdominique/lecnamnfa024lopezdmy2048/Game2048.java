@@ -5,23 +5,28 @@ package lopezdominique.lecnamnfa024lopezdmy2048;
  */
 public class Game2048 {
 
-    private int[][] board = new int[4][4];
+    private Tile[][] board;
+
 
     public Game2048() {
-        init();
+        board = new Tile[4][4];
     }
-
-    public int getTile(int l, int c){ return this.board[l][c]; }
 
     public void init(){
         int cp = 17;
         for (int l = 0; l < 4 ; l++ ){
             for (int c = 0; c < 4; c++){
-                board[l][c] = cp;
+                board[l][c] = new Tile();
+                board[l][c].r = cp;
                 cp--;
             }
         }
     }
+
+    public Tile getTile(int l, int c){ return board[l][c]; }
+
+
+
 
 
     public static class Tile {
@@ -30,6 +35,12 @@ public class Game2048 {
         private int r; // entier, puissance de 2 (0,1,2,3,4...) non le résultat
 
         public Tile() {
+            flag = 0;
+            r = 0;
+            pow2 = initPow2();
+        }
+
+        public Tile(int flag, int r) {
             this.flag = flag;
             this.r = r;
             this.pow2 = initPow2();
@@ -52,7 +63,7 @@ public class Game2048 {
          * @return r
          */
         public int getRank() {
-            return this.r;
+            return r;
         }
 
         /**
@@ -61,7 +72,7 @@ public class Game2048 {
          * @return 2^r
          */
         public int value(int r) {
-            return (int) Math.pow(2,r);
+            return pow2[r];
         }
 
         /**
@@ -84,11 +95,10 @@ public class Game2048 {
 
         /**
          *
-         * @param r int
          * @return String
          */
-        public String toString(int r) {
-            return (r == 0) ? "" : Integer.toString(value(r));
+        public String toString() {
+            return (r == 0) ? "" : Integer.toString((int)Math.pow(2,r));
         }
 
 
