@@ -2,8 +2,11 @@ package lopezdominique.lecnamnfa024lopezdmy2048;
 
 import android.os.Bundle;
 import android.support.v7.app.ActionBarActivity;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.ImageButton;
 import android.widget.LinearLayout;
 import android.widget.RatingBar;
 import android.widget.RelativeLayout;
@@ -21,6 +24,12 @@ public class MainActivity extends ActionBarActivity {
     private TextView scoreTV;
     private TextView lastTPV;
 
+    private ImageButton buttonUp;
+    private ImageButton buttonDown;
+    private ImageButton buttonLeft;
+    private ImageButton buttonRight;
+
+
     private RatingBar bestTRB;
 
     private Game2048 game;
@@ -33,9 +42,42 @@ public class MainActivity extends ActionBarActivity {
         lastTPV = (TextView) findViewById(R.id.lastTPV);
         bestTRB = (RatingBar) findViewById(R.id.bestTRB);
 
+        buttonDown = (ImageButton) findViewById(R.id.buttonD);
+        buttonUp = (ImageButton) findViewById(R.id.buttonU);
+        buttonLeft = (ImageButton) findViewById(R.id.buttonL);
+        buttonRight = (ImageButton) findViewById(R.id.buttonR);
+
+        buttonLeft.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                tryMove(0);
+            }
+        });
+        buttonUp.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                tryMove(1);
+            }
+        });
+        buttonRight.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                tryMove(2);
+            }
+        });
+        buttonDown.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                tryMove(3);
+            }
+        });
+
+
         scoreTV.setText("3 932 000");
         lastTPV.setText("2+4+128");
         bestTRB.setRating(5);
+
+
 
 
 // Initialisation du tableau des couleurs
@@ -70,6 +112,13 @@ public class MainActivity extends ActionBarActivity {
         game.init();
         update();
     }
+
+    private View.OnClickListener tryMove(int i) {
+
+        Log.i("ARROW", " = " + i);
+        return null;
+    }
+
 
     /**
      * Initialisation du tableau des identifiants des TexView et affichage dans chaque TextView de "lc="+l+c

@@ -268,16 +268,58 @@
 
     <RelativeLayout
         android:id="@+id/controlLO"
-        android:background="@color/bg_control"
         android:layout_gravity="bottom"
         android:layout_height="0dip"
         android:layout_weight="3"
         android:layout_width="match_parent"
         android:orientation="vertical"
         >
+
+        <ImageButton
+            android:id="@+id/buttonU"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:src="@drawable/up"
+            android:scaleType="fitCenter"
+            android:background="@android:color/transparent"
+            android:layout_above="@+id/buttonL"
+            android:layout_centerHorizontal="true" />
+
+        <ImageButton
+            android:id="@+id/buttonD"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:src="@drawable/down"
+            android:scaleType="fitCenter"
+            android:background="@android:color/transparent"
+            android:layout_below="@+id/buttonR"
+            android:layout_alignLeft="@+id/buttonU"
+            android:layout_alignStart="@+id/buttonU" />
+
+        <ImageButton
+            android:id="@+id/buttonR"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:src="@drawable/right"
+            android:scaleType="fitCenter"
+            android:background="@android:color/transparent"
+            android:layout_centerVertical="true"
+            android:layout_toRightOf="@+id/buttonD"
+            android:layout_toEndOf="@+id/buttonD" />
+
+        <ImageButton
+            android:id="@+id/buttonL"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:src="@drawable/left"
+            android:scaleType="fitCenter"
+            android:background="@android:color/transparent"
+            android:layout_centerVertical="true"
+            android:layout_toLeftOf="@+id/buttonD"
+            android:layout_toStartOf="@+id/buttonD" />
     </RelativeLayout>
 
-</LinearLayout>
+    </LinearLayout>
 
 </RelativeLayout>
 
