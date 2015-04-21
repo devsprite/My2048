@@ -63,7 +63,7 @@
                 android:layout_height="wrap_content"
                 android:layout_alignParentTop="true"
                 android:numStars="17"
-                android:rating="1"
+                android:rating="0"
                 android:stepSize="1"
                 style="@android:style/Widget.DeviceDefault.Light.RatingBar.Small"
                 android:layout_centerHorizontal="true"

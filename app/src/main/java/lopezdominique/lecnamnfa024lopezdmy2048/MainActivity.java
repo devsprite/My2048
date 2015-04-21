@@ -73,13 +73,6 @@ public class MainActivity extends ActionBarActivity {
         });
 
 
-        scoreTV.setText("3 932 000");
-        lastTPV.setText("2+4+128");
-        bestTRB.setRating(5);
-
-
-
-
 // Initialisation du tableau des couleurs
         colID[0] = R.color.col00;
         colID[1] = R.color.col01;
@@ -115,7 +108,7 @@ public class MainActivity extends ActionBarActivity {
 
     private View.OnClickListener tryMove(int i) {
 
-        Log.i("ARROW", " = " + i);
+        Log.i("INFO2048 ", " Arrow = " + i);
         return null;
     }
 

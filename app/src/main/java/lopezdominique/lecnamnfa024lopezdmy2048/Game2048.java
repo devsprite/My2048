@@ -1,5 +1,9 @@
 package lopezdominique.lecnamnfa024lopezdmy2048;
 
+import android.util.Log;
+
+import java.util.Random;
+
 /**
  * Created by dominique on 15/03/15.
  */
@@ -7,6 +11,10 @@ public class Game2048 {
 
     private int score;
     private int bestR;
+    private int nbv;
+
+    private Random rand;
+
     private String lastP;
 
     private Tile[][] board;
@@ -27,15 +35,18 @@ public class Game2048 {
      * Initialisation de game, on ajoute les objets Tile avec le paramêtre r allant de 17 à 2
      */
     public void init(){
-        int cp = 17;
+
         for (int l = 0; l < 4 ; l++ ){
             for (int c = 0; c < 4; c++){
                 board[l][c] = new Tile();
-                board[l][c].r = cp;
-                cp--;
             }
         }
-        board[3][3].flag = -1; // Test new tile
+
+        nbv = 16;
+
+        addTile();
+        addTile();
+
     }
 
     /**
@@ -57,6 +68,42 @@ public class Game2048 {
     public String getLastP() {
         return lastP;
     }
+    private void addTile(){
+        int nbrAleatoire;
+        int cp=0;
+        int rang;
+        rand = new Random();
+
+        nbrAleatoire = rand.nextInt(nbv)+1;
+
+        for (int l=0; l<4 ; l++) {
+            for (int c=0; c<4 ; c++){
+
+                if (this.getTile(l,c).flag == 0){
+                    cp++;
+
+                    if (nbrAleatoire == cp){
+
+                       if (rand.nextInt(100)+1 < 10 ) {
+                           rang = 1;
+                       }else {
+                           rang = 2;
+                       }
+
+                        getTile(l,c).set(rang, -1);
+                        nbv--;
+                       if (bestR<rang) bestR = rang;
+
+                        Log.i("INFO2048 ","Tile["+l+"]["+c+"] : r = "+rang+" ; flag = -1");
+                        Log.i("INFO2048 ","nbv = "+nbv+"; nbrAléatoire = "+nbrAleatoire);
+                        Log.i("INFO2048 ","bestR = "+bestR);
+
+                    }
+                }
+            }
+        }
+
+    }
 
 
     //*************************************************************************************
@@ -66,6 +113,7 @@ public class Game2048 {
     public static class Tile {
         private int[] pow2 = new int[17]; // tableau de valeurs croissantes des puissances de 2 à partir de  2^1 jusqu'à 2^17
         private int flag; // entier, état de la tuile, new ou old ?
+
         private int r; // entier, puissance de 2 (0,1,2,3,4...) non le résultat
 
         public Tile() {
@@ -133,8 +181,10 @@ public class Game2048 {
             return (r == 0) ? "" : Integer.toString((int)Math.pow(2,r));
         }
 
+        private void set(int rk, int fl) {
+            flag = fl;
+            r = rk;
+        }
 
     }
-
-
 }
