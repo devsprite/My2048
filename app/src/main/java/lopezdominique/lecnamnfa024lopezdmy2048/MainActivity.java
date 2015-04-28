@@ -12,6 +12,7 @@ import android.widget.RatingBar;
 import android.widget.RelativeLayout;
 import android.widget.TableLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 
 public class MainActivity extends ActionBarActivity {
@@ -102,14 +103,38 @@ public class MainActivity extends ActionBarActivity {
 
         initialisationTableau(); // Initialisation tableau d'identifiants des TextView
         game = new Game2048();
-        game.init();
+        game.iniTest();
         update();
     }
 
-    private View.OnClickListener tryMove(int i) {
+    private void tryMove(int i) {
+        Boolean croiss = false;
+        Boolean vert = false;
 
         Log.i("INFO2048 ", " Arrow = " + i);
-        return null;
+
+        switch (i) {
+            case 0 : // mouvement vers la gauche
+                croiss = true;
+                vert = false;
+                break;
+            case 1 : // mouvmement vers le haut
+                croiss = true;
+                vert = true;
+                break;
+            case 2 : // mouvement vers la droite
+                croiss = false;
+                vert = false;
+                break;
+            case 3 : // mouvement vers le bas
+                croiss = false;
+                vert = true;
+                break;
+        }
+
+        Toast.makeText(getApplicationContext(), "vert = " + vert + ", croiss = " + croiss, Toast.LENGTH_SHORT).show();
+        game.move(croiss, vert);
+        game.getTile(1,1,croiss,vert);
     }
 
 
