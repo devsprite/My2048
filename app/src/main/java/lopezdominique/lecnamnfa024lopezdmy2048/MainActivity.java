@@ -134,7 +134,6 @@ public class MainActivity extends ActionBarActivity {
 
         Toast.makeText(getApplicationContext(), "vert = " + vert + ", croiss = " + croiss, Toast.LENGTH_SHORT).show();
         game.move(croiss, vert);
-        game.getTile(1,1,croiss,vert);
     }
 
 

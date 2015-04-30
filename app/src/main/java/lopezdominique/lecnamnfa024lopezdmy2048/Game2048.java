@@ -3,7 +3,6 @@ package lopezdominique.lecnamnfa024lopezdmy2048;
 import android.util.Log;
 
 import java.util.ArrayList;
-import java.util.List;
 import java.util.Random;
 
 /**
@@ -138,26 +137,24 @@ public class Game2048 {
 
     public void move(Boolean croiss, Boolean vert) {
         Log.i("INFO2048", "move ( croiss = " + croiss + ", vert = " + vert);
+        ArrayList<Integer> pile = new ArrayList<>(4);
 
-        // Mouvement vers la Gauche
-        if (croiss && !vert) {
-            Log.i("INFO2048", "move Gauche");
+        String infos =" ";
+        for (int lc=0;lc<4;lc++){
+            pile.clear();
+            for (int i=0;i<4;i++){
+                if (getTile(lc,i,croiss,vert).getRank()!=0){
+                    pile.add(getTile(lc,i,croiss,vert).getRank());
+                }
+            }
+            for (int ip=0; ip<pile.size();ip++){
+                infos +=pile.get(ip);
+            }
+            infos += "\n";
         }
+        Log.i("INFO2048", "Board = \n"+infos);
 
-        // Mouvement vers la Droite
-        if (!croiss && !vert) {
-            Log.i("INFO2048", "move Droite");
-        }
 
-        // Mouvement vers le Haut
-        if (croiss && vert) {
-            Log.i("INFO2048", "move Haut");
-        }
-
-        // Mouvement vers le bas
-        if (!croiss && vert) {
-            Log.i("INFO2048", "move Bas");
-        }
     }
 
 
@@ -172,40 +169,36 @@ public class Game2048 {
      */
     public Tile getTile(int lc, int i, Boolean croiss, Boolean vert) {
 
-        List list = new ArrayList(4);
-        Tile tile = null;
+        int b_lc = 0; // Ligne ou colonne en fonction de croiss et vert
+        int b_i  = 0; // Position dans la liste en fonction de croiss et vert
 
-        if (!vert) {
-            for (int l=0; l<4; l++) {
-                if (croiss){
-                    for (int c=0; c<4; c++){
-                        // Parcours haut croiss = true, vert = false
-                        Log.i("INFO2048", "Parcours Gauche l="+l+", c="+c+", r="+board[l][c].getRank());
-                    }
-                }else{
-                    for (int c=3; c>=0; c--){
-                        // Parcours gauche croiss = false, vert = false
-                        Log.i("INFO2048", "Parcours Droite l="+l+", c="+c+", r="+board[l][c].getRank());
-                    }
-                }
-            }
-        }else {
-            for (int c=0; c<4; c++) {
-                if (croiss){
-                    for (int l=0; l<4; l++){
-                        // Parcours haut croiss = true, vert = true
-                        Log.i("INFO2048", "Parcours haut l="+l+", c="+c+", r="+board[l][c].getRank());
-                    }
-                }else{
-                    for (int l=3; l>=0; l--){
-                        // Parcours bas croiss = false, vert = true
-                        Log.i("INFO2048", "Parcours Bas l="+l+", c="+c+", r="+board[l][c].getRank());
-                    }
-                }
-            }
+        // Direction haut
+        if (croiss && vert){
+            b_lc = lc;
+            b_i = i;
         }
 
-        return tile;
+        // Direction bas
+        if (!croiss && vert){
+            b_lc = lc;
+            b_i = 3-i;
+        }
+
+        // Direction gauche
+        if (croiss && !vert) {
+            b_lc = i;
+            b_i = lc;
+        }
+
+        // Direction droite
+        if (!croiss && !vert) {
+            b_lc = 3-i;
+            b_i = lc;
+        }
+
+       // Log.i("INFO2048 getTile()", "Board["+b_lc+"]["+b_i+"]. rang = "+board[b_lc][b_i].getRank() );
+        return board[b_i][b_lc];
+
     }
 
 
